@@ -9,4 +9,8 @@ try {
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
+
+echo phpinfo();
+phpinfo();
+
 ?>
