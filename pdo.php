@@ -10,7 +10,6 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-echo phpinfo();
-phpinfo();
+echo date('Y-m-d H:i:s') . " - Connected successfully\n";
 
 ?>
