@@ -1,0 +1,53 @@
+#header {
+  background-color: #FFA500;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  display: flex; /* Usa flexbox para alinear los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+}
+
+#logo {
+  height: 105px; /* Ajusta esto según el tamaño que desees para el logo */
+  margin-right: 15px; /* Añade un margen entre el logo y el título */
+}
+  
+  #nav-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  #nav-menu li {
+    float: left;
+  }
+  
+  #nav-menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  #nav-menu li a:hover {
+    background-color: #111;
+  }
+  
+  .section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #FFF;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+  }
+
+.sensor-value {
+    margin-bottom: 20px;
+  }
+ 
+  #inicio {
+    text-align: justify;
+  }
