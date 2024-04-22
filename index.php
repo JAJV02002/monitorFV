@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tablero de Monitoreo de Sistema Fotovoltaico</title>
-  <link rel="icono sitio" type="png" href="/Users/antoniojuarez/Web_Development/monitorFV/logo.png">
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="icono sitio" type="png" href="./logo.png">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-  <script src="firebase.js" type="module"></script>
-  <script src="ui-handling.js"></script>
+  <script src="./firebase.js" type="module"></script>
+  <script src="./ui-handling.js"></script>
 </head>
 <body>
 
   <div id="header">
-    <img src="logo.png" alt="Logo" id="logo">
+    <img src="./logo.png" alt="Logo" id="logo">
     <h1>Monitoreo de Sistema Fotovoltaico</h1>
   </div>
 
