@@ -7,8 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $corriente = $_POST['corriente'] ?? '0';
     $potencia = $_POST['potencia'] ?? '0';
     $energia = $_POST['energia'] ?? '0';
+    $date = date('Y-m-d H:i:s');
 
-    $sql = "INSERT INTO mediciones_pto1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, NOW())";
+    $sql = "INSERT INTO mediciones_pto1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
 
     try {
         $stmt = $pdo->prepare($sql);
@@ -16,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':voltaje' => $voltaje,
             ':corriente' => $corriente,
             ':potencia' => $potencia,
-            ':energia' => $energia
+            ':energia' => $energia,
+            ':fecha' => $date
         ]);
         echo "Datos almacenados correctamente";
     } catch (PDOException $e) {
