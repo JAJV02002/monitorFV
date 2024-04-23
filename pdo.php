@@ -6,11 +6,10 @@ date_default_timezone_set('America/Mexico_City');
 
 try {
     $pdo = new PDO($dsn, $username, $password);
+    $pdo->exec("SET time_zone='-06:00';");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
-
-echo date('Y-m-d H:i:s') . " - Connected successfully\n";
 
 ?>
