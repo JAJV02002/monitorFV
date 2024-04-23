@@ -1,5 +1,6 @@
 <?php
 require_once 'pdo.php';
+date_default_timezone_set('America/Mexico_City');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $voltaje = $_POST['voltaje'] ?? '0';
