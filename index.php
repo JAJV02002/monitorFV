@@ -77,7 +77,7 @@
 
     <div id="semana" class="section" style="display:none;">
       <h2>Lecturas de la semana</h2>
-
+      <button id="getSemana" onclick="getData('semana')">Obtener Datos</button>
     <div id="avg-current-chart-container">
       <h3>Corriente RMS</h3>
       <canvas id="avg-current-chart"></canvas>
@@ -106,6 +106,117 @@
     </div>
   </div>
 
+  <script>
+    // Get data from database using getdata.php and set in the UI when user
+    // clicks on id of the button id getSemana
+    function getData(){
+      // Get data from getdata.php
+      fetch('getdata.php')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Set data in the UI, the data received is an array of objects is
+        // [0] => {dia: "Monday", promedioEnergia: "0.0000", promedioCorriente: "0.0000", promedioPotencia: "0.0000", promedioVoltaje: "0.0000"}
+        const avgCurrentChart = document.getElementById('avg-current-chart').getContext('2d');
+        const avgVoltageChart = document.getElementById('avg-voltage-chart').getContext('2d');
+        const avgPowerChart = document.getElementById('avg-power-chart').getContext('2d');
+        const avgEnergyChart = document.getElementById('avg-energy-chart').getContext('2d');
+
+        const days = data.map(item => item.dia);
+        const avgCurrent = data.map(item => item.promedioCorriente);
+        const avgVoltage = data.map(item => item.promedioVoltaje);
+        const avgPower = data.map(item => item.promedioPotencia);
+        const avgEnergy = data.map(item => item.promedioEnergia);
+        
+        // Create charts
+        new Chart(avgCurrentChart, {
+          type: 'bar',
+          data: {
+            labels: days,
+            datasets: [{
+              label: 'Corriente RMS',
+              data: avgCurrent,
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        new Chart(avgVoltageChart, {
+          type: 'bar',
+          data: {
+            labels: days,
+            datasets: [{
+              label: 'Voltaje RMS',
+              data: avgVoltage,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        new Chart(avgPowerChart, {
+          type: 'bar',
+          data: {
+            labels: days,
+            datasets: [{
+              label: 'Potencia activa',
+              data: avgPower,
+              backgroundColor: 'rgba(255, 206, 86, 0.2)',
+              borderColor: 'rgba(255, 206, 86, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        new Chart(avgEnergyChart, {
+          type: 'bar',
+          data: {
+            labels: days,
+            datasets: [{
+              label: 'Consumo Energético',
+              data: avgEnergy,
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      })
+      .catch(error => console.error('Error:', error));
+    }
+
+  </script>
 </body>
 </html>
 

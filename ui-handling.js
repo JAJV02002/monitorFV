@@ -151,6 +151,8 @@ $.ajax({
       return item.dia;
     });
 
+    console.log(labels);
+
     var avgEnergia = data.map(function(item) {
       return item.promedioEnergia;
     });
