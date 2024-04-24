@@ -10,20 +10,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Set time and date in this format 2024-04-19 12:17:07
     $fecha = date('Y-m-d H:i:s');
 
+    // Insert data into table mediciones_pto1
+    $sql1 = "INSERT INTO mediciones_pto1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
 
-    $sql = "INSERT INTO mediciones_pto1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
+    // Insert data into table mediciones_p1
+    $sql2 = "INSERT INTO mediciones_pt1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
 
     try {
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
+        $stmt1 = $pdo->prepare($sql1);
+        $stmt1->execute([
             ':voltaje' => $voltaje,
             ':corriente' => $corriente,
             ':potencia' => $potencia,
             ':energia' => $energia,
             ':fecha' => $fecha
         ]);
-        echo "Datos almacenados correctamente";
-        echo "Voltaje: $voltaje, Corriente: $corriente, Potencia: $potencia, Energía: $energia, Fecha: $fecha";
+
+        $stmt2 = $pdo->prepare($sql2);
+        $stmt2->execute([
+            ':voltaje' => $voltaje,
+            ':corriente' => $corriente,
+            ':potencia' => $potencia,
+            ':energia' => $energia,
+            ':fecha' => $fecha
+        ]);
+
+        echo "Datos almacenados correctamente, Fecha: $fecha";
     } catch (PDOException $e) {
         die("Error al insertar los datos: " . $e->getMessage());
     }
