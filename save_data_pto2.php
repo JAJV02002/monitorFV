@@ -10,10 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Set time and date in this format 2024-04-19 12:17:07
     $fecha = date('Y-m-d H:i:s');
 
-    // Insert data into table mediciones_pto1
-    $sql1 = "INSERT INTO mediciones_pto1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
-
-
+    // Insert data into table lecturas_pto2
+    $sql1 = "INSERT INTO lecturas_pto2 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
 
     try {
         $stmt1 = $pdo->prepare($sql1);
@@ -24,8 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':energia' => $energia,
             ':fecha' => $fecha
         ]);
-
-
 
         echo "Datos almacenados correctamente, Fecha: $fecha";
     } catch (PDOException $e) {
