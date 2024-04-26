@@ -13,8 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insert data into table mediciones_pto1
     $sql1 = "INSERT INTO mediciones_pto1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
 
-    // Insert data into table mediciones_p1
-    //$sql2 = "INSERT INTO mediciones_pt1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
+    // Insert data into table mediciones_pt2
+    $sql2 = "INSERT INTO lecturas_pto2 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
 
     try {
         $stmt1 = $pdo->prepare($sql1);
@@ -26,14 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':fecha' => $fecha
         ]);
 
-        /*$stmt2 = $pdo->prepare($sql2);
+        $stmt2 = $pdo->prepare($sql2);
         $stmt2->execute([
             ':voltaje' => $voltaje,
             ':corriente' => $corriente,
             ':potencia' => $potencia,
             ':energia' => $energia,
             ':fecha' => $fecha
-        ]);*/
+        ]);
 
         echo "Datos almacenados correctamente, Fecha: $fecha";
     } catch (PDOException $e) {
