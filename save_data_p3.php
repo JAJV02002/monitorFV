@@ -10,8 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Set time and date in this format 2024-04-19 12:17:07
     $fecha = date('Y-m-d H:i:s');
 
-    // Insert data into table lecturas_pto2
-    $sql1 = "INSERT INTO lecturas_pto2 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
+    // Insert data into table lecturas_pto3
+    $sql1 = "INSERT INTO lecturas_pto3 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
 
     try {
         $stmt1 = $pdo->prepare($sql1);
@@ -35,7 +35,7 @@ else if($_SERVER["REQUEST_METHOD"] == "GET") {
     AVG(corrienteRMS) as promedioCorriente,
     AVG(potenciaRMS) as promedioPotencia,
     AVG(voltajeRMS) as promedioVoltaje
-FROM mediciones_pto1
+FROM lecturas_pto3
 GROUP BY DAYOFWEEK(fecha)
 ORDER BY DAYOFWEEK(fecha);";
 }
