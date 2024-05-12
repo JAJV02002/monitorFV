@@ -11,6 +11,10 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
   <script src="./firebase.js" type="module"></script>
   <script src="./ui-handling.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -42,37 +46,102 @@
 
     <div id="tiempo-real" class="section" style="display:none;">
         <h2>Lecturas en Tiempo Real</h2>
-        <div id="sensor-values">
-          <!-- Valores del sensor aquí -->
+        <div id="sensor-values" style="display: flex; justify-content: space-between;">
+
+          <!-- Valores del punto de medicion 1 aquí -->
           <div class="sensor-value">
-            <strong>Corriente RMS:</strong> <span id="corriente-value">Cargando...</span>
-            <button onclick="toggleChart('current-chart')">Mostrar/Ocultar gráfico</button>
-            <div id="current-chart-container" style="display:none;">
-                <canvas id="current-chart"></canvas>
+            <strong>Corriente RMS (punto 1):</strong> <span id="corriente-value-1">Cargando...</span>
+            <button onclick="toggleChart('current-chart-1')">Mostrar/Ocultar gráfico</button>
+            <div id="current-chart-1-container" style="display:none;">
+                <canvas id="current-chart-1"></canvas>
             </div>
           </div>
           <div class="sensor-value">
-            <strong>Voltaje RMS:</strong> <span id="voltaje-value">Cargando...</span>
-            <button onclick="toggleChart('voltage-chart')">Mostrar/Ocultar gráfico</button>
-            <div id="voltage-chart-container" style="display:none;">
-                <canvas id="voltage-chart"></canvas>
+            <strong>Voltaje RMS (punto 1):</strong> <span id="voltaje-value-1">Cargando...</span>
+            <button onclick="toggleChart('voltage-chart-1')">Mostrar/Ocultar gráfico</button>
+            <div id="voltage-chart-1-container" style="display:none;">
+                <canvas id="voltage-chart-1"></canvas>
             </div>
           </div>
           <div class="sensor-value">
-            <strong>Potencia activa:</strong> <span id="potencia-value">Cargando...</span>
-            <button onclick="toggleChart('power-chart')">Mostrar/Ocultar gráfico</button>
-            <div id="power-chart-container" style="display:none;">
-                <canvas id="power-chart"></canvas>
+            <strong>Potencia activa (punto 1):</strong> <span id="potencia-value-1">Cargando...</span>
+            <button onclick="toggleChart('power-chart-1')">Mostrar/Ocultar gráfico</button>
+            <div id="power-chart-1-container" style="display:none;">
+                <canvas id="power-chart-1"></canvas>
             </div>
           </div>
           <div class="sensor-value">
-            <strong>Consumo Energético:</strong> <span id="energia-value">Cargando...</span>
-            <button onclick="toggleChart('energy-chart')">Mostrar/Ocultar gráfico</button>
-            <div id="energy-chart-container" style="display:none;">
-                <canvas id="energy-chart"></canvas>
+            <strong>Consumo Energético (punto 1):</strong> <span id="energia-value-1">Cargando...</span>
+            <button onclick="toggleChart('energy-chart-1')">Mostrar/Ocultar gráfico</button>
+            <div id="energy-chart-1-container" style="display:none;">
+                <canvas id="energy-chart-1"></canvas>
             </div>
           </div>
-        </div>      
+        </div> 
+
+        <!-- Valores del punto de medicion 2 aquí -->
+        <div id="sensor-values" style="display: flex; justify-content: space-between;">
+          <div class="sensor-value">
+            <strong>Corriente RMS (punto 2):</strong> <span id="corriente-value-2">Cargando...</span>
+            <button onclick="toggleChart('current-chart-2')">Mostrar/Ocultar gráfico</button>
+            <div id="current-chart-2-container" style="display:none;">
+                <canvas id="current-chart-2"></canvas>
+            </div>
+          </div>
+          <div class="sensor-value">
+            <strong>Voltaje RMS (punto 2):</strong> <span id="voltaje-value-2">Cargando...</span>
+            <button onclick="toggleChart('voltage-chart-2')">Mostrar/Ocultar gráfico</button>
+            <div id="voltage-chart-2-container" style="display:none;">
+                <canvas id="voltage-chart-2"></canvas>
+            </div>
+          </div>
+          <div class="sensor-value">
+            <strong>Potencia activa (punto 2):</strong> <span id="potencia-value-2">Cargando...</span>
+            <button onclick="toggleChart('power-chart-2')">Mostrar/Ocultar gráfico</button>
+            <div id="power-chart-2-container" style="display:none;">
+                <canvas id="power-chart-2"></canvas>
+            </div>
+          </div>
+          <div class="sensor-value">
+            <strong>Consumo Energético (punto 2):</strong> <span id="energia-value-2">Cargando...</span>
+            <button onclick="toggleChart('energy-chart-2')">Mostrar/Ocultar gráfico</button>
+            <div id="energy-chart-2-container" style="display:none;">
+                <canvas id="energy-chart-2"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Valores del punto de medicion 3 aquí -->
+        <div id="sensor-values" style="display: flex; justify-content: space-between;">
+          <div class="sensor-value">
+            <strong>Corriente RMS (punto 3):</strong> <span id="corriente-value-3">Cargando...</span>
+            <button onclick="toggleChart('current-chart-3')">Mostrar/Ocultar gráfico</button>
+            <div id="current-chart-3-container" style="display:none;">
+                <canvas id="current-chart-3"></canvas>
+            </div>
+          </div>
+          <div class="sensor-value">
+            <strong>Voltaje RMS (punto 3):</strong> <span id="voltaje-value-3">Cargando...</span>
+            <button onclick="toggleChart('voltage-chart-3')">Mostrar/Ocultar gráfico</button>
+            <div id="voltage-chart-3-container" style="display:none;">
+                <canvas id="voltage-chart-3"></canvas>
+            </div>
+          </div>
+          <div class="sensor-value">
+            <strong>Potencia activa (punto 3):</strong> <span id="potencia-value-3">Cargando...</span>
+            <button onclick="toggleChart('power-chart-3')">Mostrar/Ocultar gráfico</button>
+            <div id="power-chart-3-container" style="display:none;">
+                <canvas id="power-chart-3"></canvas>
+            </div>
+          </div>
+          <div class="sensor-value">
+            <strong>Consumo Energético (punto 3):</strong> <span id="energia-value-3">Cargando...</span>
+            <button onclick="toggleChart('energy-chart-3')">Mostrar/Ocultar gráfico</button>
+            <div id="energy-chart-3-container" style="display:none;">
+                <canvas id="energy-chart-3"></canvas>
+            </div>
+          </div>
+        </div>
     </div>
 
     <div id="semana" class="section" style="display:none;">
@@ -106,117 +175,5 @@
     </div>
   </div>
 
-  <script>
-    // Get data from database using getdata.php and set in the UI when user
-    // clicks on id of the button id getSemana
-    function getData(){
-      // Get data from getdata.php
-      fetch('getdata.php')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        // Set data in the UI, the data received is an array of objects is
-        // [0] => {dia: "Monday", promedioEnergia: "0.0000", promedioCorriente: "0.0000", promedioPotencia: "0.0000", promedioVoltaje: "0.0000"}
-        const avgCurrentChart = document.getElementById('avg-current-chart').getContext('2d');
-        const avgVoltageChart = document.getElementById('avg-voltage-chart').getContext('2d');
-        const avgPowerChart = document.getElementById('avg-power-chart').getContext('2d');
-        const avgEnergyChart = document.getElementById('avg-energy-chart').getContext('2d');
-
-        const days = data.map(item => item.dia);
-        const avgCurrent = data.map(item => item.promedioCorriente);
-        const avgVoltage = data.map(item => item.promedioVoltaje);
-        const avgPower = data.map(item => item.promedioPotencia);
-        const avgEnergy = data.map(item => item.promedioEnergia);
-        
-        // Create charts
-        new Chart(avgCurrentChart, {
-          type: 'bar',
-          data: {
-            labels: days,
-            datasets: [{
-              label: 'Corriente RMS',
-              data: avgCurrent,
-              backgroundColor: 'rgba(255, 99, 132, 0.2)',
-              borderColor: 'rgba(255, 99, 132, 1)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-
-        new Chart(avgVoltageChart, {
-          type: 'bar',
-          data: {
-            labels: days,
-            datasets: [{
-              label: 'Voltaje RMS',
-              data: avgVoltage,
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-
-        new Chart(avgPowerChart, {
-          type: 'bar',
-          data: {
-            labels: days,
-            datasets: [{
-              label: 'Potencia activa',
-              data: avgPower,
-              backgroundColor: 'rgba(255, 206, 86, 0.2)',
-              borderColor: 'rgba(255, 206, 86, 1)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-
-        new Chart(avgEnergyChart, {
-          type: 'bar',
-          data: {
-            labels: days,
-            datasets: [{
-              label: 'Consumo Energético',
-              data: avgEnergy,
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderColor: 'rgba(75, 192, 192, 1)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      })
-      .catch(error => console.error('Error:', error));
-    }
-
-  </script>
 </body>
 </html>
-
