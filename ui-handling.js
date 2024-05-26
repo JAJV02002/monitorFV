@@ -84,11 +84,6 @@ function toggleChart(chartId) {
     chartContainer.style.display = "none";
   }
 }
-// Inicializar gráficos vacíos para datos semanales
-// ...
-
-// Inicializar gráficos vacíos para datos mensuales
-// ...
 
 // Suscripción a datos en tiempo real de Firebase y actualización de gráficos
 document.addEventListener('DOMContentLoaded', () => {
@@ -179,18 +174,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Get data from database using getdata.php and set in the UI when user
 // clicks on id of the button id getSemana
-function getData() {
+function getData(punto) {
   // Get data from getdata.php
-  fetch('getdata.php')
+
+  if(punto == 1){
+    chartC = 'avg-current-chart-1';
+    chartV = 'avg-voltage-chart-1';
+    chartP = 'avg-power-chart-1';
+    chartE = 'avg-energy-chart-1';
+  }else if(punto == 2){
+    chartC = 'avg-current-chart-2';
+    chartV = 'avg-voltage-chart-2';
+    chartP = 'avg-power-chart-2';
+    chartE = 'avg-energy-chart-2';
+  }else if(punto == 3){
+    chartC = 'avg-current-chart-3';
+    chartV = 'avg-voltage-chart-3';
+    chartP = 'avg-power-chart-3';
+    chartE = 'avg-energy-chart-3';
+  }
+  
+
+
+  fetch('getdata.php' + '?punto=' + punto)
     .then(response => response.json())
     .then(data => {
       console.log(data);
       // Set data in the UI, the data received is an array of objects is
       // [0] => {dia: "Monday", promedioEnergia: "0.0000", promedioCorriente: "0.0000", promedioPotencia: "0.0000", promedioVoltaje: "0.0000"}
-      const avgCurrentChart = document.getElementById('avg-current-chart').getContext('2d');
-      const avgVoltageChart = document.getElementById('avg-voltage-chart').getContext('2d');
-      const avgPowerChart = document.getElementById('avg-power-chart').getContext('2d');
-      const avgEnergyChart = document.getElementById('avg-energy-chart').getContext('2d');
+      const avgCurrentChart = document.getElementById(chartC).getContext('2d');
+      const avgVoltageChart = document.getElementById(chartV).getContext('2d');
+      const avgPowerChart = document.getElementById(chartP).getContext('2d');
+      const avgEnergyChart = document.getElementById(chartE).getContext('2d');
+
 
       const days = data.map(item => item.dia);
       const avgCurrent = data.map(item => item.promedioCorriente);
