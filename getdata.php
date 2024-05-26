@@ -13,7 +13,7 @@ if($punto == 1){
     AVG(corrienteRMS) as promedioCorriente,
     AVG(potenciaRMS) as promedioPotencia,
     AVG(voltajeRMS) as promedioVoltaje
-FROM mediciones_pto1
+FROM lecturas_pto1
 GROUP BY DAYOFWEEK(fecha)
 ORDER BY DAYOFWEEK(fecha);";
 }elseif($punto == 2){
