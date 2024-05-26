@@ -177,17 +177,31 @@ document.addEventListener('DOMContentLoaded', () => {
 function getData(punto) {
   // Get data from getdata.php
 
+  // Get the id start-date and end-date input values
+  const startDate = document.getElementById('start-date').value;
+  const endDate = document.getElementById('end-date').value;
+
+  if (startDate === '' || endDate === '') {
+    alert('Por favor, seleccione un rango de fechas válido');
+    return;
+  }
+
+  console.log('startDate:', startDate);
+  console.log('endDate:', endDate);
+
   if(punto == 1){
     chartC = 'avg-current-chart-1';
     chartV = 'avg-voltage-chart-1';
     chartP = 'avg-power-chart-1';
     chartE = 'avg-energy-chart-1';
-  }else if(punto == 2){
+  }
+  if(punto == 2){
     chartC = 'avg-current-chart-2';
     chartV = 'avg-voltage-chart-2';
     chartP = 'avg-power-chart-2';
     chartE = 'avg-energy-chart-2';
-  }else if(punto == 3){
+  }
+  if(punto == 3){
     chartC = 'avg-current-chart-3';
     chartV = 'avg-voltage-chart-3';
     chartP = 'avg-power-chart-3';
@@ -196,7 +210,7 @@ function getData(punto) {
   
 
 
-  fetch('getdata.php' + '?punto=' + punto)
+  fetch('getdata.php' + '?punto=' + punto + '&startDate=' + startDate + '&endDate=' + endDate)
     .then(response => response.json())
     .then(data => {
       console.log(data);
