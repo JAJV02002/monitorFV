@@ -12,59 +12,73 @@
   margin-right: 15px; /* Añade un margen entre el logo y el título */
 }
   
-  #nav-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
+#nav-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
   
-  #nav-menu li {
-    float: left;
-  }
+#nav-menu li {
+  float: left;
+}
   
-  #nav-menu li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+#nav-menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
   
-  #nav-menu li a:hover {
-    background-color: #111;
-  }
+#nav-menu li a:hover {
+  background-color: #111;
+}
   
-  .section {
-    margin: 20px;
-    padding: 20px;
-    background-color: #FFF;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  }
+.section {
+  margin: 20px;
+  padding: 20px;
+  background-color: #FFF;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
 
 .sensor-value {
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
+}
   
-  .chart-container {
-    /* estilos para tu contenedor de gráficos, por ejemplo: */
-    height: 300px; /* o cualquier altura que desees */
-  }
+.chart-container {
+  /* estilos para tu contenedor de gráficos, por ejemplo: */
+  height: 300px; /* o cualquier altura que desees */
+}
   
-  /* Estilos para los botones que muestran los gráficos */
-  .sensor-value button {
-    /* estilos para tu botón, por ejemplo: */
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #4CAF50; /* Verde por ejemplo */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+/* Estilos para los botones que muestran los gráficos */
+.sensor-value button {
+  /* estilos para botón: */
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #4CAF50; /* Verde por ejemplo */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
   
-  .sensor-value button:hover {
-    background-color: #45a049; /* Un verde más oscuro para el hover */
-  }
+.sensor-value button:hover {
+  background-color: #45a049; /* Un verde más oscuro para el hover */
+}
+
+.button-style {
+  /* Aquí puedes agregar el estilo que desees para tus botones */
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f69d3f; /* Verde por ejemplo */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  

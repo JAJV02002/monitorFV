@@ -42,4 +42,4 @@ ORDER BY DAYOFWEEK(fecha);";
 else {
     echo "Método de solicitud no permitido";
 }
-?>
+

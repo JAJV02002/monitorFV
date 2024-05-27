@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fecha = date('Y-m-d H:i:s');
 
     // Insert data into table mediciones_pto1
-    $sql1 = "INSERT INTO mediciones_pto1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
+    $sql1 = "INSERT INTO lecturas_pto1 (voltajeRMS, corrienteRMS, potenciaRMS, consumoEnergetico, fecha) VALUES (:voltaje, :corriente, :potencia, :energia, :fecha)";
 
 
 
@@ -39,11 +39,11 @@ else if($_SERVER["REQUEST_METHOD"] == "GET") {
     AVG(corrienteRMS) as promedioCorriente,
     AVG(potenciaRMS) as promedioPotencia,
     AVG(voltajeRMS) as promedioVoltaje
-FROM mediciones_pto1
+FROM lecturas_pto1
 GROUP BY DAYOFWEEK(fecha)
 ORDER BY DAYOFWEEK(fecha);";
 }
 else {
     echo "Método de solicitud no permitido";
 }
-?>
+

@@ -9,7 +9,7 @@ $end_date = $_GET['endDate'];
 
 $tabla = '';
 
-if ($punto == 1) {
+if ($punto === "1semana") {
     $sql = "SELECT 
     fecha,
     DAY(fecha) as numeroDiaCalendario,
@@ -23,7 +23,7 @@ WHERE fecha BETWEEN '$start_date' AND '$end_date'
 GROUP BY DAY(fecha)
 ORDER BY DAY(fecha);";
 } 
-elseif ($punto == 2) {
+elseif ($punto === "2semana") {
     $sql = "SELECT 
     fecha,
     DAY(fecha) as numeroDiaCalendario,
@@ -37,7 +37,7 @@ WHERE fecha BETWEEN '$start_date' AND '$end_date'
 GROUP BY DAY(fecha)
 ORDER BY DAY(fecha);";
 } 
-elseif ($punto == 3) {
+elseif ($punto === "3semana") {
     $sql = "SELECT 
     fecha,
     DAY(fecha) as numeroDiaCalendario,
@@ -51,6 +51,48 @@ WHERE fecha BETWEEN '$start_date' AND '$end_date'
 GROUP BY DAY(fecha)
 ORDER BY DAY(fecha);";
 } 
+elseif ($punto === "1mes") {
+    $sql = "SELECT 
+    fecha,
+    DAY(fecha) as numeroDiaCalendario,
+    DAYNAME(fecha) as dia,
+    AVG(consumoEnergetico) as promedioEnergia,
+    AVG(corrienteRMS) as promedioCorriente,
+    AVG(potenciaRMS) as promedioPotencia,
+    AVG(voltajeRMS) as promedioVoltaje
+FROM lecturas_pto1
+WHERE fecha BETWEEN '$start_date' AND '$end_date'
+GROUP BY DAY(fecha)
+ORDER BY DAY(fecha);";
+}
+elseif ($punto === "2mes") {
+    $sql = "SELECT 
+    fecha,
+    DAY(fecha) as numeroDiaCalendario,
+    DAYNAME(fecha) as dia,
+    AVG(consumoEnergetico) as promedioEnergia,
+    AVG(corrienteRMS) as promedioCorriente,
+    AVG(potenciaRMS) as promedioPotencia,
+    AVG(voltajeRMS) as promedioVoltaje
+FROM lecturas_pto2
+WHERE fecha BETWEEN '$start_date' AND '$end_date'
+GROUP BY DAY(fecha)
+ORDER BY DAY(fecha);";
+}
+elseif ($punto === "3mes") {
+    $sql = "SELECT 
+    fecha,
+    DAY(fecha) as numeroDiaCalendario,
+    DAYNAME(fecha) as dia,
+    AVG(consumoEnergetico) as promedioEnergia,
+    AVG(corrienteRMS) as promedioCorriente,
+    AVG(potenciaRMS) as promedioPotencia,
+    AVG(voltajeRMS) as promedioVoltaje
+FROM lecturas_pto3
+WHERE fecha BETWEEN '$start_date' AND '$end_date'
+GROUP BY DAY(fecha)
+ORDER BY DAY(fecha);";
+}
 
 try {
     $stmt = $pdo->query($sql);
@@ -59,3 +101,5 @@ try {
 } catch (PDOException $e) {
     die("Error al obtener los datos: " . $e->getMessage());
 }
+
+

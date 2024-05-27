@@ -10,35 +10,37 @@ function showSection(sectionId) {
 }
 
 // Funciones para la creación de gráficos
-let charts = {};// Almacenamiento global para las instancias de Chart
+let charts = {}; // Almacenamiento global para las instancias de Chart
 
 // Crear un gráfico y almacenarlo en el objeto charts
 function createChart(chartId, label, color, minY, maxY) {
-  // Asegúrate de que la creación del gráfico solo ocurre si aún no ha sido creado
-  if (!charts[chartId]) {
-    const ctx = document.getElementById(chartId).getContext('2d');
-    charts[chartId] = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: [],
-        datasets: [{
-          label: label,
-          data: [],
-          borderColor: color,
-          fill: false
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: false,
-            suggestedMin: minY,
-            suggestedMax: maxY,
-          }
+  // Destruye el gráfico existente si ya ha sido creado
+  if (charts[chartId]) {
+    charts[chartId].destroy();
+  }
+
+  const ctx = document.getElementById(chartId).getContext('2d');
+  charts[chartId] = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        label: label,
+        data: [],
+        borderColor: color,
+        fill: false
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: false,
+          suggestedMin: minY,
+          suggestedMax: maxY,
         }
       }
-    });
-  }
+    }
+  });
   return charts[chartId];
 }
 
@@ -189,26 +191,43 @@ function getData(punto) {
   console.log('startDate:', startDate);
   console.log('endDate:', endDate);
 
-  if(punto == 1){
+  if (punto === "1semana") {
     chartC = 'avg-current-chart-1';
     chartV = 'avg-voltage-chart-1';
     chartP = 'avg-power-chart-1';
     chartE = 'avg-energy-chart-1';
   }
-  if(punto == 2){
+  if (punto === "2semana") {
     chartC = 'avg-current-chart-2';
     chartV = 'avg-voltage-chart-2';
     chartP = 'avg-power-chart-2';
     chartE = 'avg-energy-chart-2';
   }
-  if(punto == 3){
+  if (punto === "3semana") {
     chartC = 'avg-current-chart-3';
     chartV = 'avg-voltage-chart-3';
     chartP = 'avg-power-chart-3';
     chartE = 'avg-energy-chart-3';
   }
-  
 
+  if (punto === "1mes") {
+    chartC = 'avg-current-chart-1-month';
+    chartV = 'avg-voltage-chart-1-month';
+    chartP = 'avg-power-chart-1-month';
+    chartE = 'avg-energy-chart-1-month';
+  }
+  if (punto === "2mes") {
+    chartC = 'avg-current-chart-2-month';
+    chartV = 'avg-voltage-chart-2-month';
+    chartP = 'avg-power-chart-2-month';
+    chartE = 'avg-energy-chart-2-month';
+  }
+  if (punto === "3mes") {
+    chartC = 'avg-current-chart-3-month';
+    chartV = 'avg-voltage-chart-3-month';
+    chartP = 'avg-power-chart-3-month';
+    chartE = 'avg-energy-chart-3-month';
+  }
 
   fetch('getdata.php' + '?punto=' + punto + '&startDate=' + startDate + '&endDate=' + endDate)
     .then(response => response.json())
@@ -221,15 +240,28 @@ function getData(punto) {
       const avgPowerChart = document.getElementById(chartP).getContext('2d');
       const avgEnergyChart = document.getElementById(chartE).getContext('2d');
 
-
       const days = data.map(item => item.dia);
       const avgCurrent = data.map(item => item.promedioCorriente);
       const avgVoltage = data.map(item => item.promedioVoltaje);
       const avgPower = data.map(item => item.promedioPotencia);
       const avgEnergy = data.map(item => item.promedioEnergia);
 
-      // Create charts
-      new Chart(avgCurrentChart, {
+      // Destruir los gráficos si ya existen
+      if (charts[chartC]) {
+        charts[chartC].destroy();
+      }
+      if (charts[chartV]) {
+        charts[chartV].destroy();
+      }
+      if (charts[chartP]) {
+        charts[chartP].destroy();
+      }
+      if (charts[chartE]) {
+        charts[chartE].destroy();
+      }
+
+      // Crear gráficos
+      charts[chartC] = new Chart(avgCurrentChart, {
         type: 'bar',
         data: {
           labels: days,
@@ -250,7 +282,7 @@ function getData(punto) {
         }
       });
 
-      new Chart(avgVoltageChart, {
+      charts[chartV] = new Chart(avgVoltageChart, {
         type: 'bar',
         data: {
           labels: days,
@@ -271,7 +303,7 @@ function getData(punto) {
         }
       });
 
-      new Chart(avgPowerChart, {
+      charts[chartP] = new Chart(avgPowerChart, {
         type: 'bar',
         data: {
           labels: days,
@@ -292,7 +324,7 @@ function getData(punto) {
         }
       });
 
-      new Chart(avgEnergyChart, {
+      charts[chartE] = new Chart(avgEnergyChart, {
         type: 'bar',
         data: {
           labels: days,
@@ -316,9 +348,9 @@ function getData(punto) {
     .catch(error => console.error('Error:', error));
 }
 
-
 // Hacer las funciones accesibles globalmente.
 window.showSection = showSection;
 window.toggleChart = toggleChart;
 window.createChart = createChart;
 window.updateChart = updateChart;
+window.getData = getData;

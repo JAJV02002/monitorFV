@@ -6,7 +6,7 @@ import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.
 
 // Configuración de Firebase para la web App 
 const firebaseConfig = {
-  aapiKey: "AIzaSyBmTfSm5GohhphVdkvh2lxC8aTKf_N4Q1jS",
+  apiKey: "AIzaSyBmTfSm5GohhphVdkvh2lxC8aTKf_N4Q1jS",
   authDomain: "monitorfv-basedatos-esp32.firebaseapp.com",
   databaseURL: "https://monitorfv-basedatos-esp32-default-rtdb.firebaseio.com",
   projectId: "monitorfv-basedatos-esp32",

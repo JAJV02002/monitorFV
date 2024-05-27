@@ -44,151 +44,301 @@
       </div>
       <p>La interactividad y la respuesta inmediata son elementos esenciales de esta plataforma, que se adapta a diferentes tamaños de pantalla para facilitar el acceso desde cualquier dispositivo.</p>
     </div>
-  </div>
 
-  <div id="tiempo-real" class="section" style="display:none;">
-    <h2>Lecturas en Tiempo Real</h2>
-    <div id="sensor-values" style="display: flex; justify-content: space-between;">
+    <div id="tiempo-real" class="section" style="display:none;">
+      <h2>Lecturas en Tiempo Real</h2>
+      <div id="sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <!-- Valores del punto de medición 1 -->
+        <div class="sensor-value">
+          <strong>Corriente RMS (punto 1):</strong> <span id="corriente-value-1">Cargando...</span>
+          <button onclick="toggleChart('current-chart-1')">Mostrar gráfico</button>
+          <div id="current-chart-1-container" style="display:none;">
+            <canvas id="current-chart-1"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <strong>Voltaje RMS (punto 1):</strong> <span id="voltaje-value-1">Cargando...</span>
+          <button onclick="toggleChart('voltage-chart-1')">Mostrar gráfico</button>
+          <div id="voltage-chart-1-container" style="display:none;">
+            <canvas id="voltage-chart-1"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <strong>Potencia activa (punto 1):</strong> <span id="potencia-value-1">Cargando...</span>
+          <button onclick="toggleChart('power-chart-1')">Mostrar gráfico</button>
+          <div id="power-chart-1-container" style="display:none;">
+            <canvas id="power-chart-1"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <strong>Consumo Energético (punto 1):</strong> <span id="energia-value-1">Cargando...</span>
+          <button onclick="toggleChart('energy-chart-1')">Mostrar gráfico</button>
+          <div id="energy-chart-1-container" style="display:none;">
+            <canvas id="energy-chart-1"></canvas>
+          </div>
+        </div>
+      </div>
 
-      <!-- Valores del punto de medicion 1 aquí -->
-      <div class="sensor-value">
-        <strong>Corriente RMS (punto 1):</strong> <span id="corriente-value-1">Cargando...</span>
-        <button onclick="toggleChart('current-chart-1')">Mostrar gráfico</button>
-        <div id="current-chart-1-container" style="display:none;">
-          <canvas id="current-chart-1"></canvas>
+      <div id="sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <!-- Valores del punto de medición 2 -->
+        <div class="sensor-value">
+          <strong>Corriente RMS (punto 2):</strong> <span id="corriente-value-2">Cargando...</span>
+          <button onclick="toggleChart('current-chart-2')">Mostrar gráfico</button>
+          <div id="current-chart-2-container" style="display:none;">
+            <canvas id="current-chart-2"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <strong>Voltaje RMS (punto 2):</strong> <span id="voltaje-value-2">Cargando...</span>
+          <button onclick="toggleChart('voltage-chart-2')">Mostrar gráfico</button>
+          <div id="voltage-chart-2-container" style="display:none;">
+            <canvas id="voltage-chart-2"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <strong>Potencia activa (punto 2):</strong> <span id="potencia-value-2">Cargando...</span>
+          <button onclick="toggleChart('power-chart-2')">Mostrar gráfico</button>
+          <div id="power-chart-2-container" style="display:none;">
+            <canvas id="power-chart-2"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <strong>Consumo Energético (punto 2):</strong> <span id="energia-value-2">Cargando...</span>
+          <button onclick="toggleChart('energy-chart-2')">Mostrar gráfico</button>
+          <div id="energy-chart-2-container" style="display:none;">
+            <canvas id="energy-chart-2"></canvas>
+          </div>
         </div>
       </div>
-      <div class="sensor-value">
-        <strong>Voltaje RMS (punto 1):</strong> <span id="voltaje-value-1">Cargando...</span>
-        <button onclick="toggleChart('voltage-chart-1')">Mostrar gráfico</button>
-        <div id="voltage-chart-1-container" style="display:none;">
-          <canvas id="voltage-chart-1"></canvas>
+
+      <div id="sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <!-- Valores del punto de medición 3 -->
+        <div class="sensor-value">
+          <strong>Corriente RMS (punto 3):</strong> <span id="corriente-value-3">Cargando...</span>
+          <button onclick="toggleChart('current-chart-3')">Mostrar gráfico</button>
+          <div id="current-chart-3-container" style="display:none;">
+            <canvas id="current-chart-3"></canvas>
+          </div>
         </div>
-      </div>
-      <div class="sensor-value">
-        <strong>Potencia activa (punto 1):</strong> <span id="potencia-value-1">Cargando...</span>
-        <button onclick="toggleChart('power-chart-1')">Mostrar gráfico</button>
-        <div id="power-chart-1-container" style="display:none;">
-          <canvas id="power-chart-1"></canvas>
+        <div class="sensor-value">
+          <strong>Voltaje RMS (punto 3):</strong> <span id="voltaje-value-3">Cargando...</span>
+          <button onclick="toggleChart('voltage-chart-3')">Mostrar gráfico</button>
+          <div id="voltage-chart-3-container" style="display:none;">
+            <canvas id="voltage-chart-3"></canvas>
+          </div>
         </div>
-      </div>
-      <div class="sensor-value">
-        <strong>Consumo Energético (punto 1):</strong> <span id="energia-value-1">Cargando...</span>
-        <button onclick="toggleChart('energy-chart-1')">Mostrar gráfico</button>
-        <div id="energy-chart-1-container" style="display:none;">
-          <canvas id="energy-chart-1"></canvas>
+        <div class="sensor-value">
+          <strong>Potencia activa (punto 3):</strong> <span id="potencia-value-3">Cargando...</span>
+          <button onclick="toggleChart('power-chart-3')">Mostrar gráfico</button>
+          <div id="power-chart-3-container" style="display:none;">
+            <canvas id="power-chart-3"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <strong>Consumo Energético (punto 3):</strong> <span id="energia-value-3">Cargando...</span>
+          <button onclick="toggleChart('energy-chart-3')">Mostrar gráfico</button>
+          <div id="energy-chart-3-container" style="display:none;">
+            <canvas id="energy-chart-3"></canvas>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Valores del punto de medicion 2 aquí -->
-    <div id="sensor-values" style="display: flex; justify-content: space-between;">
-      <div class="sensor-value">
-        <strong>Corriente RMS (punto 2):</strong> <span id="corriente-value-2">Cargando...</span>
-        <button onclick="toggleChart('current-chart-2')">Mostrar gráfico</button>
-        <div id="current-chart-2-container" style="display:none;">
-          <canvas id="current-chart-2"></canvas>
+    <div id="semana" class="section" style="display:none;">
+      <h2>Lecturas de la semana</h2>
+      <strong>Seleccione la fecha de inicio y fin de la semana que desea visualizar los datos:</strong>
+      <input type="date" id="start-date" required>
+      <input type="date" id="end-date" required>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <button class="button-style" id="getSemanaP1" onclick="getData('1semana')">Obtener Datos punto 1</button>
+        <button class="button-style" id="getSemanaP2" onclick="getData('2semana')">Obtener Datos punto 2</button>
+        <button class="button-style" id="getSemanaP3" onclick="getData('3semana')">Obtener Datos punto 3</button>
+      </div>
+
+      <!-- Gráficas del punto de medición 1 -->
+      <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-current-chart-1')">Mostrar Corriente RMS</button>
+          <div id="avg-current-chart-1-container" style="display:none;">
+            <canvas id="avg-current-chart-1"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-voltage-chart-1')">Mostrar Voltaje RMS</button>
+          <div id="avg-voltage-chart-1-container" style="display:none;">
+            <canvas id="avg-voltage-chart-1"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-power-chart-1')">Mostrar Potencia activa</button>
+          <div id="avg-power-chart-1-container" style="display:none;">
+            <canvas id="avg-power-chart-1"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-energy-chart-1')">Mostrar Consumo Energético</button>
+          <div id="avg-energy-chart-1-container" style="display:none;">
+            <canvas id="avg-energy-chart-1"></canvas>
+          </div>
         </div>
       </div>
-      <div class="sensor-value">
-        <strong>Voltaje RMS (punto 2):</strong> <span id="voltaje-value-2">Cargando...</span>
-        <button onclick="toggleChart('voltage-chart-2')">Mostrar gráfico</button>
-        <div id="voltage-chart-2-container" style="display:none;">
-          <canvas id="voltage-chart-2"></canvas>
+
+      <!-- Gráficas del punto de medición 2 -->
+      <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-current-chart-2')">Mostrar Corriente RMS</button>
+          <div id="avg-current-chart-2-container" style="display:none;">
+            <canvas id="avg-current-chart-2"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-voltage-chart-2')">Mostrar Voltaje RMS</button>
+          <div id="avg-voltage-chart-2-container" style="display:none;">
+            <canvas id="avg-voltage-chart-2"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-power-chart-2')">Mostrar Potencia activa</button>
+          <div id="avg-power-chart-2-container" style="display:none;">
+            <canvas id="avg-power-chart-2"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-energy-chart-2')">Mostrar Consumo Energético</button>
+          <div id="avg-energy-chart-2-container" style="display:none;">
+            <canvas id="avg-energy-chart-2"></canvas>
+          </div>
         </div>
       </div>
-      <div class="sensor-value">
-        <strong>Potencia activa (punto 2):</strong> <span id="potencia-value-2">Cargando...</span>
-        <button onclick="toggleChart('power-chart-2')">Mostrar gráfico</button>
-        <div id="power-chart-2-container" style="display:none;">
-          <canvas id="power-chart-2"></canvas>
+
+      <!-- Gráficas del punto de medición 3 -->
+      <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-current-chart-3')">Mostrar Corriente RMS</button>
+          <div id="avg-current-chart-3-container" style="display:none;">
+            <canvas id="avg-current-chart-3"></canvas>
+          </div>
         </div>
-      </div>
-      <div class="sensor-value">
-        <strong>Consumo Energético (punto 2):</strong> <span id="energia-value-2">Cargando...</span>
-        <button onclick="toggleChart('energy-chart-2')">Mostrar gráfico</button>
-        <div id="energy-chart-2-container" style="display:none;">
-          <canvas id="energy-chart-2"></canvas>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-voltage-chart-3')">Mostrar Voltaje RMS</button>
+          <div id="avg-voltage-chart-3-container" style="display:none;">
+            <canvas id="avg-voltage-chart-3"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-power-chart-3')">Mostrar Potencia activa</button>
+          <div id="avg-power-chart-3-container" style="display:none;">
+            <canvas id="avg-power-chart-3"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-energy-chart-3')">Mostrar Consumo Energético</button>
+          <div id="avg-energy-chart-3-container" style="display:none;">
+            <canvas id="avg-energy-chart-3"></canvas>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Valores del punto de medicion 3 aquí -->
-    <div id="sensor-values" style="display: flex; justify-content: space-between;">
-      <div class="sensor-value">
-        <strong>Corriente RMS (punto 3):</strong> <span id="corriente-value-3">Cargando...</span>
-        <button onclick="toggleChart('current-chart-3')">Mostrar gráfico</button>
-        <div id="current-chart-3-container" style="display:none;">
-          <canvas id="current-chart-3"></canvas>
+    <div id="mes" class="section" style="display:none;">
+      <h2>Lecturas del Mes</h2>
+      <strong>Seleccione la fecha de inicio y fin del mes que desea visualizar los datos:</strong>
+      <input type="date" id="start-date-month" required>
+      <input type="date" id="end-date-month" required>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <button class="button-style" id="getMesP1" onclick="getData('1mes')">Obtener Datos punto 1</button>
+        <button class="button-style" id="getMesP2" onclick="getData('2mes')">Obtener Datos punto 2</button>
+        <button class="button-style" id="getMesP3" onclick="getData('3mes')">Obtener Datos punto 3</button>
+      </div>
+
+      <!-- Gráficas del punto de medición 1 -->
+      <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-current-chart-1-month')">Mostrar Corriente RMS</button>
+          <div id="avg-current-chart-1-month-container" style="display:none;">
+            <canvas id="avg-current-chart-1-month"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-voltage-chart-1-month')">Mostrar Voltaje RMS</button>
+          <div id="avg-voltage-chart-1-month-container" style="display:none;">
+            <canvas id="avg-voltage-chart-1-month"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-power-chart-1-month')">Mostrar Potencia activa</button>
+          <div id="avg-power-chart-1-month-container" style="display:none;">
+            <canvas id="avg-power-chart-1-month"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-energy-chart-1-month')">Mostrar Consumo Energético</button>
+          <div id="avg-energy-chart-1-month-container" style="display:none;">
+            <canvas id="avg-energy-chart-1-month"></canvas>
+          </div>
         </div>
       </div>
-      <div class="sensor-value">
-        <strong>Voltaje RMS (punto 3):</strong> <span id="voltaje-value-3">Cargando...</span>
-        <button onclick="toggleChart('voltage-chart-3')">Mostrar gráfico</button>
-        <div id="voltage-chart-3-container" style="display:none;">
-          <canvas id="voltage-chart-3"></canvas>
+
+      <!-- Gráficas del punto de medición 2 -->
+      <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-current-chart-2-month')">Mostrar Corriente RMS</button>
+          <div id="avg-current-chart-2-month-container" style="display:none;">
+            <canvas id="avg-current-chart-2-month"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-voltage-chart-2-month')">Mostrar Voltaje RMS</button>
+          <div id="avg-voltage-chart-2-month-container" style="display:none;">
+            <canvas id="avg-voltage-chart-2-month"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-power-chart-2-month')">Mostrar Potencia activa</button>
+          <div id="avg-power-chart-2-month-container" style="display:none;">
+            <canvas id="avg-power-chart-2-month"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-energy-chart-2-month')">Mostrar Consumo Energético</button>
+          <div id="avg-energy-chart-2-month-container" style="display:none;">
+            <canvas id="avg-energy-chart-2-month"></canvas>
+          </div>
         </div>
       </div>
-      <div class="sensor-value">
-        <strong>Potencia activa (punto 3):</strong> <span id="potencia-value-3">Cargando...</span>
-        <button onclick="toggleChart('power-chart-3')">Mostrar gráfico</button>
-        <div id="power-chart-3-container" style="display:none;">
-          <canvas id="power-chart-3"></canvas>
+
+      <!-- Gráficas del punto de medición 3 -->
+      <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-current-chart-3-month')">Mostrar Corriente RMS</button>
+          <div id="avg-current-chart-3-month-container" style="display:none;">
+            <canvas id="avg-current-chart-3-month"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-voltage-chart-3-month')">Mostrar Voltaje RMS</button>
+          <div id="avg-voltage-chart-3-month-container" style="display:none;">
+            <canvas id="avg-voltage-chart-3-month"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-power-chart-3-month')">Mostrar Potencia activa</button>
+          <div id="avg-power-chart-3-month-container" style="display:none;">
+            <canvas id="avg-power-chart-3-month"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <button onclick="toggleChart('avg-energy-chart-3-month')">Mostrar Consumo Energético</button>
+          <div id="avg-energy-chart-3-month-container" style="display:none;">
+            <canvas id="avg-energy-chart-3-month"></canvas>
+          </div>
         </div>
       </div>
-      <div class="sensor-value">
-        <strong>Consumo Energético (punto 3):</strong> <span id="energia-value-3">Cargando...</span>
-        <button onclick="toggleChart('energy-chart-3')">Mostrar gráfico</button>
-        <div id="energy-chart-3-container" style="display:none;">
-          <canvas id="energy-chart-3"></canvas>
-        </div>
-      </div>
     </div>
-  </div>
-
-  <div id="semana" class="section" style="display:none;">
-    <h2>Lecturas de la semana</h2>
-    <input type="date" id="start-date" required>
-    <input type="date" id="end-date" required>
-
-    <button id="getSemanaP1" onclick="getData('1')">Obtener Datos punto 1</button>
-    <button id="getSemanaP2" onclick="getData('2')">Obtener Datos punto 2</button>
-    <button id="getSemanaP3" onclick="getData('3')">Obtener Datos punto 3</button>
-
-    <div id="avg-current-chart-container">
-      <h3>Corriente RMS</h3>
-      <canvas id="avg-current-chart-1"></canvas>
-      <canvas id="avg-current-chart-2"></canvas>
-      <canvas id="avg-current-chart-3"></canvas>
-    </div>
-    <div id="avg-voltage-chart-container">
-      <h3>Voltaje RMS</h3>
-      <canvas id="avg-voltage-chart-1"></canvas>
-      <canvas id="avg-voltage-chart-2"></canvas>
-      <canvas id="avg-voltage-chart-3"></canvas>
-    </div>
-    <div id="avg-power-chart-container">
-      <h3>Potencia activa</h3>
-      <canvas id="avg-power-chart-1"></canvas>
-      <canvas id="avg-power-chart-2"></canvas>
-      <canvas id="avg-power-chart-3"></canvas>
-    </div>
-
-    <div id="avg-energy-chart-container">
-      <h3>Consumo Energético</h3>
-      <canvas id="avg-energy-chart-1"></canvas>
-      <canvas id="avg-energy-chart-2"></canvas>
-      <canvas id="avg-energy-chart-3"></canvas>
-    </div>
-
-  </div>
-
-  <div id="mes" class="section" style="display:none;">
-    <h2>Lecturas del Mes</h2>
-    <!-- Contenido de Mediciones del Mes aquí -->
-  </div>
   </div>
 
 </body>
 
 </html>
+
+
