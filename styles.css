@@ -11,7 +11,32 @@
   height: 105px; /* Ajusta esto según el tamaño que desees para el logo */
   margin-right: 15px; /* Añade un margen entre el logo y el título */
 }
-  
+
+.inicio-content {
+  display: flex;
+  align-items: center; /* Alinea el texto y la imagen al inicio del contenedor */
+}
+
+.inicio-text {
+  flex: 0.75; /* Permite que el texto ocupe todo el espacio disponible */
+}
+
+.inicio-text p {
+  margin-bottom: 20px; /* Agrega un margen al final de cada párrafo para separarlos */
+  text-align: justify; /* Justifica el texto */
+}
+
+.inicio-img {
+  width: 25%; /* Cambia esto al tamaño que desees */
+  margin-left: 100px; /* Agrega un margen a la izquierda de la imagen para separarla del texto */
+  border: 10px solid #FFA500; /* Agrega un borde a la imagen */
+  transition: transform .2s; /* Animación suave */
+}
+
+.inicio-img:hover {
+  transform: scale(1.1); /* Al pasar el cursor, la imagen se amplía al 110% de su tamaño original */
+}
+
 #nav-menu ul {
   list-style-type: none;
   margin: 0;

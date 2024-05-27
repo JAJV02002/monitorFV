@@ -37,12 +37,14 @@
   <div id="content">
     <div id="inicio" class="section">
       <h2>Inicio</h2>
-      <p>Esta interfaz es el núcleo de este proyecto de tesis destinado a la gestión de energía en sistemas fotovoltaicos. Aquí se puede monitorear en tiempo real los parámetros críticos del sistema, garantizando así una supervisión efectiva y la optimización del rendimiento energético.</p>
-      <p>Las Centrales Eléctricas Virtuales (VPPs) representan una red de recursos energéticos distribuidos que, coordinados, funcionan como una única central eléctrica. La relevancia de los sistemas de monitoreo es crucial en las VPPs, ya que permiten una gestión eficiente y una respuesta rápida a las demandas del mercado energético.</p>
-      <div id="vpp-image-container">
-        <img src="vpp-image.jpg" alt="VPP Image" style="max-width: 100%; height: auto;">
-      </div>
-      <p>La interactividad y la respuesta inmediata son elementos esenciales de esta plataforma, que se adapta a diferentes tamaños de pantalla para facilitar el acceso desde cualquier dispositivo.</p>
+      <div class="inicio-content">
+        <div class="inicio-text">
+          <strong>Bienvenido a la interfaz SolarVista.</strong>
+          <p>Esta interfaz es el núcleo de este proyecto de tesis destinado a la gestión de energía en sistemas fotovoltaicos. Aquí se puede monitorear en tiempo real los parámetros críticos del sistema, garantizando así una supervisión efectiva y la optimización del rendimiento energético.</p>
+          <p>Las Centrales Eléctricas Virtuales (VPPs) representan una red de recursos energéticos distribuidos que, coordinados, funcionan como una única central eléctrica. La relevancia de los sistemas de monitoreo es crucial en las VPPs, ya que permiten una gestión eficiente y una respuesta rápida a las demandas del mercado energético.</p>
+        </div>
+        <img class="inicio-img" src="vpp-image.jpg" alt="VPP Imagen" style="max-width: 100%; height: auto;">
+      </div> 
     </div>
 
     <div id="tiempo-real" class="section" style="display:none;">
