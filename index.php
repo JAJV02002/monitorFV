@@ -22,7 +22,7 @@
 
   <div id="header">
     <img src="./logo.png" alt="Logo" id="logo">
-    <h1>Monitoreo de Sistema Fotovoltaico</h1>
+    <h1>SolarVista</h1>
   </div>
 
   <div id="nav-menu">
@@ -41,7 +41,7 @@
         <div class="inicio-text">
           <strong>Bienvenido a la interfaz SolarVista.</strong>
           <p>Esta interfaz es el núcleo de este proyecto de tesis destinado a la gestión de energía en sistemas fotovoltaicos. Aquí se puede monitorear en tiempo real los parámetros críticos del sistema, garantizando así una supervisión efectiva y la optimización del rendimiento energético.</p>
-          <p>Las Centrales Eléctricas Virtuales (VPPs) representan una red de recursos energéticos distribuidos que, coordinados, funcionan como una única central eléctrica. La relevancia de los sistemas de monitoreo es crucial en las VPPs, ya que permiten una gestión eficiente y una respuesta rápida a las demandas del mercado energético.</p>
+          <p>Las Centrales Eléctricas Virtuales (VPPs) representan una red de recursos energéticos distribuidos que, coordinados, funcionan como una única central eléctrica. La relevancia de los sistemas de monitoreo de este tipo es crucial en las VPPs, ya que permiten una gestión eficiente y una respuesta rápida a las demandas del mercado energético.</p>
         </div>
         <img class="inicio-img" src="vpp-image.jpg" alt="VPP Imagen" style="max-width: 100%; height: auto;">
       </div> 
