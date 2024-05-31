@@ -182,14 +182,18 @@ function getData(punto) {
   // Get the id start-date and end-date input values
   const startDate = document.getElementById('start-date').value;
   const endDate = document.getElementById('end-date').value;
+  const startDateMonth = document.getElementById('start-date-month').value;
+  const endDateMonth = document.getElementById('end-date-month').value;
 
-  if (startDate === '' || endDate === '') {
+  if (startDate === '' || endDate === '' || startDateMonth === '' || endDateMonth === '') {
     alert('Por favor, seleccione un rango de fechas válido');
     return;
   }
 
   console.log('startDate:', startDate);
   console.log('endDate:', endDate);
+  console.log('startDateMonth:', startDateMonth);
+  console.log('endDateMonth:', endDateMonth);
 
   if (punto === "1semana") {
     chartC = 'avg-current-chart-1';
@@ -346,6 +350,36 @@ function getData(punto) {
       });
     })
     .catch(error => console.error('Error:', error));
+}
+
+function fetchPotenciaRmsData(type) {
+  let endpoint = '';
+  //Para enviar la fecha al archivo php
+  let fecha = document.getElementById('fecha-potenciaRMS').value;
+  console.log("fecha ", fecha);
+  //Para enviar el punto al archivo php
+  let punto = document.getElementById('selectPunto').value;
+  console.log("punto ", punto);
+
+  if (type === 'potenciaRMS') {
+    endpoint = 'get_potenciaRMS_data.php?fecha=' + fecha + '&punto=' + punto;
+  }
+
+  fetch(endpoint)
+    .then(response => response.json())
+    .then(data => {
+      if (!charts.potenciaDia) {
+        charts.potenciaDia = createChart('potenciaDia-chart', type.toUpperCase(), 'blue', 0, 100);
+      }
+
+      const potenciaDiaChart = charts.potenciaDia;
+      potenciaDiaChart.data.labels = data.labels;
+      potenciaDiaChart.data.datasets[0].data = data.values;
+      potenciaDiaChart.update();
+
+      document.getElementById('potenciaDia-chart-container').style.display = 'block';
+    })
+    .catch(error => console.error('Error fetching PotenciaDia data:', error));
 }
 
 // Hacer las funciones accesibles globalmente.

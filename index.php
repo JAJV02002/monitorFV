@@ -240,6 +240,21 @@
           </div>
         </div>
       </div>
+
+      <!-- Sección de gráficos de potencia -->
+      <div class="sensor-value">   
+      <h2>Gráfico Potencia de un día completo</h2>
+      <select id="selectPunto">
+        <option value="pto1">Punto 1</option>
+        <option value="pto2">Punto 2</option>
+        <option value="pto3">Punto 3</option>
+      </select>
+      <input type="date" id="fecha-potenciaRMS" required>
+      <button onclick="fetchPotenciaRmsData('potenciaRMS')">Mostrar Gráfico Potencia en el dia</button>
+      <div id="potenciaDia-chart-container" style="display:none;">
+        <canvas id="potenciaDia-chart"></canvas>
+      </div>
+      </div>
     </div>
 
     <div id="mes" class="section" style="display:none;">
@@ -337,10 +352,14 @@
         </div>
       </div>
     </div>
+
   </div>
 
 </body>
 
 </html>
+
+
+
 
 

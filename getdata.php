@@ -6,6 +6,8 @@ date_default_timezone_set('America/Mexico_City');
 $punto = $_GET['punto'];
 $start_date = $_GET['startDate'];
 $end_date = $_GET['endDate'];
+$start_date_month = $_GET['startDateMonth'];
+$end_date_month = $_GET['endDateMonth'];
 
 $tabla = '';
 
@@ -61,7 +63,7 @@ elseif ($punto === "1mes") {
     AVG(potenciaRMS) as promedioPotencia,
     AVG(voltajeRMS) as promedioVoltaje
 FROM lecturas_pto1
-WHERE fecha BETWEEN '$start_date' AND '$end_date'
+WHERE fecha BETWEEN '$start_date_month' AND '$end_date_month'
 GROUP BY DAY(fecha)
 ORDER BY DAY(fecha);";
 }
@@ -75,7 +77,7 @@ elseif ($punto === "2mes") {
     AVG(potenciaRMS) as promedioPotencia,
     AVG(voltajeRMS) as promedioVoltaje
 FROM lecturas_pto2
-WHERE fecha BETWEEN '$start_date' AND '$end_date'
+WHERE fecha BETWEEN '$start_date_month' AND '$end_date_month'
 GROUP BY DAY(fecha)
 ORDER BY DAY(fecha);";
 }
@@ -89,7 +91,7 @@ elseif ($punto === "3mes") {
     AVG(potenciaRMS) as promedioPotencia,
     AVG(voltajeRMS) as promedioVoltaje
 FROM lecturas_pto3
-WHERE fecha BETWEEN '$start_date' AND '$end_date'
+WHERE fecha BETWEEN '$start_date_month' AND '$end_date_month'
 GROUP BY DAY(fecha)
 ORDER BY DAY(fecha);";
 }
