@@ -250,7 +250,7 @@
         <option value="pto3">Punto 3</option>
       </select>
       <input type="date" id="fecha-potenciaRMS" required>
-      <button onclick="fetchPotenciaRmsData('potenciaRMS')">Mostrar Gráfico Potencia en el dia</button>
+      <button onclick="fetchPotenciaRmsData('potenciaRMS')">Mostrar Gráfico</button>
       <div id="potenciaDia-chart-container" style="display:none;">
         <canvas id="potenciaDia-chart"></canvas>
       </div>
@@ -263,9 +263,9 @@
       <input type="date" id="start-date-month" required>
       <input type="date" id="end-date-month" required>
       <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-        <button class="button-style" id="getMesP1" onclick="getData('1mes')">Obtener Datos punto 1</button>
-        <button class="button-style" id="getMesP2" onclick="getData('2mes')">Obtener Datos punto 2</button>
-        <button class="button-style" id="getMesP3" onclick="getData('3mes')">Obtener Datos punto 3</button>
+        <button class="button-style" id="getMesP1" onclick="getDataMes('1mes')">Obtener Datos punto 1</button>
+        <button class="button-style" id="getMesP2" onclick="getDataMes('2mes')">Obtener Datos punto 2</button>
+        <button class="button-style" id="getMesP3" onclick="getDataMes('3mes')">Obtener Datos punto 3</button>
       </div>
 
       <!-- Gráficas del punto de medición 1 -->

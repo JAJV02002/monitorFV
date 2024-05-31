@@ -182,18 +182,16 @@ function getData(punto) {
   // Get the id start-date and end-date input values
   const startDate = document.getElementById('start-date').value;
   const endDate = document.getElementById('end-date').value;
-  const startDateMonth = document.getElementById('start-date-month').value;
-  const endDateMonth = document.getElementById('end-date-month').value;
 
-  if (startDate === '' || endDate === '' || startDateMonth === '' || endDateMonth === '') {
+
+  if (startDate === '' || endDate === '') {
     alert('Por favor, seleccione un rango de fechas válido');
     return;
   }
 
   console.log('startDate:', startDate);
   console.log('endDate:', endDate);
-  console.log('startDateMonth:', startDateMonth);
-  console.log('endDateMonth:', endDateMonth);
+
 
   if (punto === "1semana") {
     chartC = 'avg-current-chart-1';
@@ -214,24 +212,6 @@ function getData(punto) {
     chartE = 'avg-energy-chart-3';
   }
 
-  if (punto === "1mes") {
-    chartC = 'avg-current-chart-1-month';
-    chartV = 'avg-voltage-chart-1-month';
-    chartP = 'avg-power-chart-1-month';
-    chartE = 'avg-energy-chart-1-month';
-  }
-  if (punto === "2mes") {
-    chartC = 'avg-current-chart-2-month';
-    chartV = 'avg-voltage-chart-2-month';
-    chartP = 'avg-power-chart-2-month';
-    chartE = 'avg-energy-chart-2-month';
-  }
-  if (punto === "3mes") {
-    chartC = 'avg-current-chart-3-month';
-    chartV = 'avg-voltage-chart-3-month';
-    chartP = 'avg-power-chart-3-month';
-    chartE = 'avg-energy-chart-3-month';
-  }
 
   fetch('getdata.php' + '?punto=' + punto + '&startDate=' + startDate + '&endDate=' + endDate)
     .then(response => response.json())
@@ -352,6 +332,142 @@ function getData(punto) {
     .catch(error => console.error('Error:', error));
 }
 
+// Función getDataMes para que obtenga y grafique los promedios del mes
+function getDataMes(punto) {
+  const startDateMonth = document.getElementById('start-date-month').value;
+  const endDateMonth = document.getElementById('end-date-month').value;
+
+  if (!startDateMonth || !endDateMonth) {
+    alert('Por favor, seleccione un rango de fechas válido');
+    return;
+  }
+
+  let chartCMonth, chartVMonth, chartPMonth, chartEMonth;
+  if (punto === "1mes") {
+    chartCMonth = 'avg-current-chart-1-month';
+    chartVMonth = 'avg-voltage-chart-1-month';
+    chartPMonth = 'avg-power-chart-1-month';
+    chartEMonth = 'avg-energy-chart-1-month';
+  }
+  if (punto === "2mes") {
+    chartCMonth = 'avg-current-chart-2-month';
+    chartVMonth = 'avg-voltage-chart-2-month';
+    chartPMonth = 'avg-power-chart-2-month';
+    chartEMonth = 'avg-energy-chart-2-month';
+  }
+  if (punto === "3mes") {
+    chartCMonth = 'avg-current-chart-3-month';
+    chartVMonth = 'avg-voltage-chart-3-month';
+    chartPMonth = 'avg-power-chart-3-month';
+    chartEMonth = 'avg-energy-chart-3-month';
+  }
+
+  fetch('getdata.php' + '?punto=' + punto + '&startDateMonth=' + startDateMonth + '&endDateMonth=' + endDateMonth)
+    .then(response => response.json())
+    .then(data => {
+      const avgCurrentChartMonth = document.getElementById(chartCMonth).getContext('2d');
+      const avgVoltageChartMonth = document.getElementById(chartVMonth).getContext('2d');
+      const avgPowerChartMonth = document.getElementById(chartPMonth).getContext('2d');
+      const avgEnergyChartMonth = document.getElementById(chartEMonth).getContext('2d');
+
+      const labels = ['Promedio del Mes'];
+      const avgCurrent = [data[0].promedioCorriente];
+      const avgVoltage = [data[0].promedioVoltaje];
+      const avgPower = [data[0].promedioPotencia];
+      const avgEnergy = [data[0].promedioEnergia];
+
+      if (charts[chartCMonth]) charts[chartCMonth].destroy();
+      if (charts[chartVMonth]) charts[chartVMonth].destroy();
+      if (charts[chartPMonth]) charts[chartPMonth].destroy();
+      if (charts[chartEMonth]) charts[chartEMonth].destroy();
+
+      charts[chartCMonth] = new Chart(avgCurrentChartMonth, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Corriente RMS',
+            data: avgCurrent,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      charts[chartVMonth] = new Chart(avgVoltageChartMonth, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Voltaje RMS',
+            data: avgVoltage,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      charts[chartPMonth] = new Chart(avgPowerChartMonth, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Potencia activa',
+            data: avgPower,
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            borderColor: 'rgba(255, 206, 86, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      charts[chartEMonth] = new Chart(avgEnergyChartMonth, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Consumo Energético',
+            data: avgEnergy,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    })
+    .catch(error => console.error('Error:', error));
+}
+
 function fetchPotenciaRmsData(type) {
   let endpoint = '';
   //Para enviar la fecha al archivo php
@@ -388,3 +504,4 @@ window.toggleChart = toggleChart;
 window.createChart = createChart;
 window.updateChart = updateChart;
 window.getData = getData;
+window.getDataMes = getDataMes;

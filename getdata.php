@@ -6,8 +6,8 @@ date_default_timezone_set('America/Mexico_City');
 $punto = $_GET['punto'];
 $start_date = $_GET['startDate'];
 $end_date = $_GET['endDate'];
-$start_date_month = $_GET['startDateMonth'];
-$end_date_month = $_GET['endDateMonth'];
+$start_date_month = $_GET['startDateMonth'] ?? null;
+$end_date_month = $_GET['endDateMonth'] ?? null;
 
 $tabla = '';
 
@@ -55,45 +55,30 @@ ORDER BY DAY(fecha);";
 } 
 elseif ($punto === "1mes") {
     $sql = "SELECT 
-    fecha,
-    DAY(fecha) as numeroDiaCalendario,
-    DAYNAME(fecha) as dia,
     AVG(consumoEnergetico) as promedioEnergia,
     AVG(corrienteRMS) as promedioCorriente,
     AVG(potenciaRMS) as promedioPotencia,
     AVG(voltajeRMS) as promedioVoltaje
 FROM lecturas_pto1
-WHERE fecha BETWEEN '$start_date_month' AND '$end_date_month'
-GROUP BY DAY(fecha)
-ORDER BY DAY(fecha);";
+WHERE fecha BETWEEN '$start_date_month' AND '$end_date_month';";
 }
 elseif ($punto === "2mes") {
     $sql = "SELECT 
-    fecha,
-    DAY(fecha) as numeroDiaCalendario,
-    DAYNAME(fecha) as dia,
     AVG(consumoEnergetico) as promedioEnergia,
     AVG(corrienteRMS) as promedioCorriente,
     AVG(potenciaRMS) as promedioPotencia,
     AVG(voltajeRMS) as promedioVoltaje
 FROM lecturas_pto2
-WHERE fecha BETWEEN '$start_date_month' AND '$end_date_month'
-GROUP BY DAY(fecha)
-ORDER BY DAY(fecha);";
+WHERE fecha BETWEEN '$start_date_month' AND '$end_date_month';";
 }
 elseif ($punto === "3mes") {
     $sql = "SELECT 
-    fecha,
-    DAY(fecha) as numeroDiaCalendario,
-    DAYNAME(fecha) as dia,
     AVG(consumoEnergetico) as promedioEnergia,
     AVG(corrienteRMS) as promedioCorriente,
     AVG(potenciaRMS) as promedioPotencia,
     AVG(voltajeRMS) as promedioVoltaje
 FROM lecturas_pto3
-WHERE fecha BETWEEN '$start_date_month' AND '$end_date_month'
-GROUP BY DAY(fecha)
-ORDER BY DAY(fecha);";
+WHERE fecha BETWEEN '$start_date_month' AND '$end_date_month';";
 }
 
 try {

@@ -10,6 +10,7 @@
 #logo {
   height: 105px; /* Ajusta esto según el tamaño que desees para el logo */
   margin-right: 15px; /* Añade un margen entre el logo y el título */
+  border: 5px solid #000000; /* Agrega un borde a la imagen */
 }
 
 .inicio-content {
