@@ -46,7 +46,7 @@ function createChart(chartId, label, color, minY, maxY) {
 
 // Actualizar un gráfico con nuevos datos
 function updateChart(chartId, newData) {
-  console.log(`Updating chart (${chartId}) with new data:`, newData);
+
 
   const chart = charts[chartId];
   if (chart) {
@@ -189,8 +189,7 @@ function getData(punto) {
     return;
   }
 
-  console.log('startDate:', startDate);
-  console.log('endDate:', endDate);
+
 
 
   if (punto === "1semana") {
@@ -216,7 +215,7 @@ function getData(punto) {
   fetch('getdata.php' + '?punto=' + punto + '&startDate=' + startDate + '&endDate=' + endDate)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+
       // Set data in the UI, the data received is an array of objects is
       // [0] => {dia: "Monday", promedioEnergia: "0.0000", promedioCorriente: "0.0000", promedioPotencia: "0.0000", promedioVoltaje: "0.0000"}
       const avgCurrentChart = document.getElementById(chartC).getContext('2d');
@@ -472,10 +471,10 @@ function fetchPotenciaRmsData(type) {
   let endpoint = '';
   //Para enviar la fecha al archivo php
   let fecha = document.getElementById('fecha-potenciaRMS').value;
-  console.log("fecha ", fecha);
+
   //Para enviar el punto al archivo php
   let punto = document.getElementById('selectPunto').value;
-  console.log("punto ", punto);
+
 
   if (type === 'potenciaRMS') {
     endpoint = 'get_potenciaRMS_data.php?fecha=' + fecha + '&punto=' + punto;

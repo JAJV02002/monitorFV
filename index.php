@@ -159,6 +159,7 @@
 
       <!-- Gráficas del punto de medición 1 -->
       <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <strong>Punto 1:</strong>
         <div class="sensor-value">
           <button onclick="toggleChart('avg-current-chart-1')">Mostrar Corriente RMS</button>
           <div id="avg-current-chart-1-container" style="display:none;">
@@ -187,6 +188,7 @@
 
       <!-- Gráficas del punto de medición 2 -->
       <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <strong>Punto 2:</strong>
         <div class="sensor-value">
           <button onclick="toggleChart('avg-current-chart-2')">Mostrar Corriente RMS</button>
           <div id="avg-current-chart-2-container" style="display:none;">
@@ -215,6 +217,7 @@
 
       <!-- Gráficas del punto de medición 3 -->
       <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <strong>Punto 2:</strong>
         <div class="sensor-value">
           <button onclick="toggleChart('avg-current-chart-3')">Mostrar Corriente RMS</button>
           <div id="avg-current-chart-3-container" style="display:none;">
@@ -270,6 +273,7 @@
 
       <!-- Gráficas del punto de medición 1 -->
       <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <strong>Punto 1:</strong>
         <div class="sensor-value">
           <button onclick="toggleChart('avg-current-chart-1-month')">Mostrar Corriente RMS</button>
           <div id="avg-current-chart-1-month-container" style="display:none;">
@@ -298,6 +302,7 @@
 
       <!-- Gráficas del punto de medición 2 -->
       <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <strong>Punto 2:</strong>
         <div class="sensor-value">
           <button onclick="toggleChart('avg-current-chart-2-month')">Mostrar Corriente RMS</button>
           <div id="avg-current-chart-2-month-container" style="display:none;">
@@ -326,6 +331,7 @@
 
       <!-- Gráficas del punto de medición 3 -->
       <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <strong>Punto 3:</strong>
         <div class="sensor-value">
           <button onclick="toggleChart('avg-current-chart-3-month')">Mostrar Corriente RMS</button>
           <div id="avg-current-chart-3-month-container" style="display:none;">
