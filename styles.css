@@ -61,7 +61,32 @@
 #nav-menu li a:hover {
   background-color: #111;
 }
+
+
+#nav-menu-index ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
   
+#nav-menu-index li {
+  float: right;
+}
+  
+#nav-menu-index li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+  
+#nav-menu-index li a:hover {
+  background-color: #111;
+}
+
 .section {
   margin: 20px;
   padding: 20px;
@@ -100,11 +125,63 @@
   display: block;
   margin: 10px 0;
   padding: 10px;
-  background-color: #f69d3f; /* Verde por ejemplo */
+  background-color: #f69d3f; /* Naranja por ejemplo */
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
+.form-container {
+  background-color: #f7df86;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+  margin-top: 25px;
+  margin-left: min(20%, 50%);
+}
+
+.form-container h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-container input, .form-container select {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form-container .form-btn {
+  background-color: #f69d3f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.form-container .form-btn:hover {
+  background-color: #f7c086;
+}
+
+.form-container p {
+  color: #333;
+}
+
+.form-container a {
+  color: #45a049;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
   
