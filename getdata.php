@@ -4,12 +4,23 @@ require_once 'pdo.php';
 date_default_timezone_set('America/Mexico_City');
 
 $punto = $_GET['punto'];
-$start_date = $_GET['startDate'];
-$end_date = $_GET['endDate'];
-$start_date_month = $_GET['startDateMonth'] ?? null;
-$end_date_month = $_GET['endDateMonth'] ?? null;
+$pto = $_GET['pto'];
+$rango = $_GET['rango'];
+// $start_date = $_GET['startDate'];
+// $end_date = $_GET['endDate'];
+// $start_date_month = $_GET['startDateMonth'] ?? null;
+// $end_date_month = $_GET['endDateMonth'] ?? null;
 
 $tabla = '';
+
+if(isset($pto)){
+    $sql = "SELECT * 
+            FROM lecturas_$pto
+            WHERE fecha >= DATE_SUB(NOW(), INTERVAL $rango)
+            ORDER BY fecha ASC;";
+}
+
+
 
 if ($punto === "1semana") {
     $sql = "SELECT 

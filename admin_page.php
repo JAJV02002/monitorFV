@@ -43,6 +43,7 @@ if(!isset($_SESSION['admin_name'])){
       <li><a href="#" onclick="showSection('tiempo-real')">Lecturas en Tiempo Real</a></li>
       <li><a href="#" onclick="showSection('semana')">Lecturas de la Semana</a></li>
       <li><a href="#" onclick="showSection('mes')">Lecturas del Mes</a></li>
+      <li><a href="#" onclick="showSection('generado')">Lecturas generado</a></li>
       <li><a href="logout.php">Cerrar Sesión</a></li>
     </ul>
   </div>
@@ -370,7 +371,77 @@ if(!isset($_SESSION['admin_name'])){
       </div>
     </div>
 
+    <div id="generado" class="section" style="display:none;">
+      <h2>Ultimas lecturas generadas</h2>
+      <!-- <strong>Seleccione la fecha de inicio y fin del mes que desea visualizar los datos:</strong> -->
+      <!-- <input type="date" id="start-date-month" required>
+      <input type="date" id="end-date-month" required> -->
+      <div>
+      
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <select name="selectPto" id="selectPto">
+          <option value="0">Seleccione el punto</option>
+          <option value="pto1">Punto 1</option>
+          <option value="pto2">Punto 2</option>
+          <option value="pto3">Punto 3</option>
+          <option value="all">Todos</option>
+        </select>
+        <!-- <button class="button-style" id="getGenerado" onclick="getDataGenerado()">Ver</button> -->
+        <button class="button-style" id="getGeneradoD" onclick="getDataGenerado('1 DAY')" >Día anterior</button>
+        <button class="button-style" id="getGeneradoS" onclick="getDataGenerado('20 DAY')" >Ultima semana</button>
+        <button class="button-style" id="getGeneradoM" onclick="getDataGenerado('1 MONTH')" >Ultimo mes</button>
+      </div>
+
+      <!-- Gráficas del punto de medición 1 -->
+      <div id="avg-sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="sensor-value">
+          <!-- <button onchange="toggleChart('avg-current-chart-1-month')">Mostrar Corriente RMS</button> -->
+          <div id="avg-current-chart-1-gen-container" >
+            <canvas id="avg-current-chart-1-gen"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <!-- <button onchange="toggleChart('avg-voltage-chart-1-month')">Mostrar Voltaje RMS</button> -->
+          <div id="avg-voltage-chart-1-gen-container" >
+            <canvas id="avg-voltage-chart-1-gen"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <!-- <button onchange="toggleChart('avg-power-chart-1-month')">Mostrar Potencia activa</button> -->
+          <div id="avg-power-chart-1-gen-container" >
+            <canvas id="avg-power-chart-1-gen"></canvas>
+          </div>
+        </div>
+        <div class="sensor-value">
+          <!-- <button onchange="toggleChart('avg-energy-chart-1-month')">Mostrar Consumo Energético</button> -->
+          <div id="avg-energy-chart-1-gen-container" >
+            <canvas id="avg-energy-chart-1-gen"></canvas>
+          </div>
+        </div>
+
+        
+      </div>
+      <!-- Tabla con lecturas -->
+      <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Consumo Energetico</th>
+                        <th>Corriente RMS</th>
+                        <th>Voltaje RMS</th>
+                        <th>Potencia aparente</th>
+                        <th>Fecha de lectura</th>
+                    </tr>
+                </thead>
+                <tbody id="dataTable">
+
+                </tbody>
+            </table>
+    </div>
+
   </div>
+  <script src="jquery.js"></script>
+
 
 </body>
 
