@@ -1,8 +1,7 @@
 // Este archivo maneja la creación y actualización de los gráficos con Chart.js. y la interfaz de usuario
-
 // Definición de funcion para mostrar y ocultar secciones
 function showSection(sectionId) {
-  const sections = ['inicio', 'tiempo-real', 'semana', 'mes'];
+  const sections = ['inicio', 'tiempo-real', 'semana', 'mes', 'oferta'];
   sections.forEach((id) => {
     document.getElementById(id).style.display = 'none';
   });
@@ -467,6 +466,145 @@ function getDataMes(punto) {
     .catch(error => console.error('Error:', error));
 }
 
+// Función getDataMes para que obtenga y grafique los promedios del mes
+function getDataGenerado(rango) {
+  var dt = document.getElementById('dataTable');
+  html = `<tr><td colspan="5">Aún no hay lecturas</td></tr>`;
+  dt.innerHTML = "";
+
+  var punto = document.getElementById('selectPto').value;
+
+
+  let chartCGen, chartVGen, chartPGen, chartEGen;
+    chartCGen = 'avg-current-chart-1-gen';
+    chartVGen = 'avg-voltage-chart-1-gen';
+    chartPGen = 'avg-power-chart-1-gen';
+    chartEGen = 'avg-energy-chart-1-gen';
+
+  fetch('getdata.php' + '?pto=' + punto + '&punto=null&startDateMonth=null&endDateMonth=null&rango=' + rango)
+    .then(response => response.json())
+    .then(data => {
+
+      // Se modifica la tabla para mostrar las lecturas
+      if (data.length > 0) {
+        for (let reading of data) {
+          html += `
+            <tr>
+              <td>${reading.consumoEnergetico}</td>
+              <td>${reading.corrienteRMS}</td>
+              <td>${reading.voltajeRMS}</td>
+              <td>${reading.potenciaRMS}</td>
+              <td>${reading.fecha}</td>
+            </tr>
+            `;
+        }
+      }
+
+      dt.innerHTML += html;
+
+      const avgCurrentChartGen = document.getElementById(chartCGen).getContext('2d');
+      const avgVoltageChartGen = document.getElementById(chartVGen).getContext('2d');
+      const avgPowerChartGen = document.getElementById(chartPGen).getContext('2d');
+      const avgEnergyChartGen = document.getElementById(chartEGen).getContext('2d');
+
+      const labels = ['Promedio'];
+      const avgCurrent = [data[0].corrienteRMS];
+      const avgVoltage = [data[0].voltajeRMS];
+      const avgPower = [data[0].potenciaRMS];
+      const avgEnergy = [data[0].consumoEnergetico];
+
+      if (charts[chartCGen]) charts[chartCGen].destroy();
+      if (charts[chartVGen]) charts[chartVGen].destroy();
+      if (charts[chartPGen]) charts[chartPGen].destroy();
+      if (charts[chartEGen]) charts[chartEGen].destroy();
+
+      charts[chartCGen] = new Chart(avgCurrentChartGen, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Corriente RMS',
+            data: avgCurrent,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      charts[chartVGen] = new Chart(avgVoltageChartGen, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Voltaje RMS',
+            data: avgVoltage,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      charts[chartPGen] = new Chart(avgPowerChartGen, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Potencia activa',
+            data: avgPower,
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            borderColor: 'rgba(255, 206, 86, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      charts[chartEGen] = new Chart(avgEnergyChartGen, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Consumo Energético',
+            data: avgEnergy,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    })
+    .catch(error => console.error('Error:', error));
+}
+
 function fetchPotenciaRmsData(type) {
   let endpoint = '';
   //Para enviar la fecha al archivo php
@@ -504,3 +642,4 @@ window.createChart = createChart;
 window.updateChart = updateChart;
 window.getData = getData;
 window.getDataMes = getDataMes;
+window.getDataGenerado = getDataGenerado;

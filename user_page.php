@@ -43,6 +43,7 @@ if(!isset($_SESSION['user_name'])){
       <li><a href="#" onclick="showSection('tiempo-real')">Lecturas en Tiempo Real</a></li>
       <li><a href="#" onclick="showSection('semana')">Lecturas de la Semana</a></li>
       <li><a href="#" onclick="showSection('mes')">Lecturas del Mes</a></li>
+      <li><a href="#" onclick="showSection('ofertas')">Ofertas de Energía</a></li>
       <li><a href="logout.php">Cerrar Sesión</a></li>
     </ul>
   </div>
@@ -59,6 +60,7 @@ if(!isset($_SESSION['user_name'])){
       </div> 
     </div>
 
+    <!-- Seccion de lecturas en tiempo real -->
     <div id="tiempo-real" class="section" style="display:none;">
       <h2>Lecturas en Tiempo Real</h2>
       <div id="sensor-values" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
@@ -94,6 +96,7 @@ if(!isset($_SESSION['user_name'])){
       </div>
     </div>
 
+    <!-- Seccion de lecturas de la semana -->    
     <div id="semana" class="section" style="display:none;">
       <h2>Lecturas de la semana</h2>
       <strong>Seleccione la fecha de inicio y fin de la semana que desea visualizar los datos:</strong>
@@ -134,6 +137,7 @@ if(!isset($_SESSION['user_name'])){
 
     </div>
 
+<!-- Seccion de lecturas del mes -->  
     <div id="mes" class="section" style="display:none;">
       <h2>Lecturas del Mes</h2>
       <strong>Seleccione la fecha de inicio y fin del mes que desea visualizar los datos:</strong>
@@ -170,9 +174,24 @@ if(!isset($_SESSION['user_name'])){
             <canvas id="avg-energy-chart-1-month"></canvas>
           </div>
         </div>
-      </div>
+      </div>    
   </div>
 
+  <!-- Seccion de ofertas de energía -->
+  <div id="ofertas" class="section" style="display:none;">
+    <h2>Ofertas de Energía</h2>
+    <strong>Seleccione la fecha de inicio y fin de la semana que desea visualizar los datos:</strong>
+    <input type="date" id="start-date" required>
+    <input type="date" id="end-date" required>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <button class="button-style" id="getSemanaP1" onclick="getData('1semana')">Obtener Datos punto 1</button>
+    </div>
+
+    <!--Función para mandar a llamar la página de ofertas -->
+    <script>
+    fetchOffers();  // Llama a esta función al cargar la página o actualizar.
+    </script>
+  </div>
 </body>
 
 </html>
